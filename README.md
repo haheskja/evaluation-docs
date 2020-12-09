@@ -1,10 +1,13 @@
 # evaluation-docs
 Documentation and steps for evaluation
 
+### Notes
+It is possible to borrow a GitHub and npm user for the steps included in this process, or you can use your own. It will include pushing a component library to a new GitHub repository, and publishing the same component library to npmjs.
+
 ## Section 1. Component owner
 
 ### 1.0 Setting up the component library
-1. Copy the files from boilerplate.zip.
+1. Extract the contents from boilerplate.zip into an empty folder.
 2. Follow the package verification guide from https://github.com/dhis2designlab/scp-cli to configure your package for the platform. This includes defining the keyword, git repository, and the dhis2ComponentSearch property in package.json.
 3. Run `npx -p "https://github.com/dhis2designlab/scp-cli#master" dhis2-scp-cli verify` to perform a local verification of your code. (Skipping eslint for now)
 4. Run `npm run build` to build a production version of your libray.
@@ -44,6 +47,5 @@ Documentation and steps for evaluation
 
 ### 3.0 Search for components
 1. Open the website: https://dhis2designlab.github.io/scp-website/.
-2. Find one of the components you created and published in your package (e.g. Sidebar).
-3. Find a component related to covid for react.
-4. Identify the export and keywords, and go to the package's npm link.
+2. Test our the search and filters. E.g. use them to find a component you are interested in (or one that you just published in your component library.)
+4. Identify the name, export, and keywords on the component card, and use it to navigate to the component's npm location.
