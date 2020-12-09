@@ -8,9 +8,10 @@ It is possible to borrow a GitHub and npm user for the steps included in this pr
 
 ### 1.0 Setting up the component library
 1. Extract the contents from boilerplate.zip into an empty folder.
-2. Follow the package verification guide from https://github.com/dhis2designlab/scp-cli to configure your package for the platform. This includes defining the keyword, git repository, and the dhis2ComponentSearch property in package.json.
-3. Run `npx -p "https://github.com/dhis2designlab/scp-cli#master" dhis2-scp-cli verify` to perform a local verification of your code. (Skipping eslint for now)
-4. Run `npm run build` to build a production version of your libray.
+2. Change the name of the package in package.json to something else
+3. Follow the package verification guide from https://github.com/dhis2designlab/scp-cli to configure your package for the platform. This includes defining the keyword, git repository, and the dhis2ComponentSearch property in package.json.
+4. Run `npx -p "https://github.com/dhis2designlab/scp-cli#master" dhis2-scp-cli verify` to perform a local verification of your code. (Skipping eslint for now)
+5. Run `npm run build` to build a production version of your libray.
 
 ### 1.1 Push your component library to GitHub
 1. For your component library to be verified later on, it needs to be hosted in a public github repository. So go ahead and create a new public repository and push your component library.
