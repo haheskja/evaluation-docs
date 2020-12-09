@@ -10,15 +10,19 @@ It is possible to borrow a GitHub and npm user for the steps included in this pr
 1. Extract the contents from boilerplate.zip into an empty folder.
 2. Change the name of the package in package.json to something else
 3. Follow the package verification guide from https://github.com/dhis2designlab/scp-cli to configure your package for the platform. This includes defining the keyword, git repository, and the dhis2ComponentSearch property in package.json.
-4. Run `npx -p "https://github.com/dhis2designlab/scp-cli#master" dhis2-scp-cli verify` to perform a local verification of your code. (Skipping eslint for now)
-5. Run `npm run build` to build a production version of your libray.
+   1. Remember to add the HTTPS link to your GitHub repository after it has been created. This needs to be the HTTPS url, and not the SSH url! It should look like it does in section [1.2 Repository](https://github.com/dhis2designlab/scp-cli/blob/master/README.md).
+   2. Look in the `src` folder for the components you will need to define.
+3. Run `npm install` to install all dependencies.
+4. Run `npm run build` to build a production version of your libray.
+5. Run `npx -p "https://github.com/dhis2designlab/scp-cli#master" dhis2-scp-cli verify` to perform a local verification of your code.
+
 
 ### 1.1 Push your component library to GitHub
-1. For your component library to be verified later on, it needs to be hosted in a public github repository. So go ahead and create a new public repository and push your component library.
+1. For your component library to be verified later on, it needs to be hosted in a public github repository. So go ahead and create a new public repository and push your component library. Remember to add the HTTPS version of the url to the GitHub repository to your package.json file, and not the SSH version!
    1. You can either use your own GitHub account or "borrow" a test acccount for this.
    2. `git init`
    3. `git add .`
-   4. `git commit -m "Added base files"`
+   4. `git commit -m "Initial commit"`
    5. `git remote add origin <GitHub url>`
    6. `git push --set-upstream origin master`
    
@@ -27,10 +31,10 @@ It is possible to borrow a GitHub and npm user for the steps included in this pr
 2. Run `npm publish` to publish your new package.
 
 ### 1.3 Apply for verification
-1. First, you need to create a production tag in GitHub that matches your published npm package, i.e. version `v1.0.0`.
+1. First, you need to create a production tag in GitHub that matches the version of your published npm package, i.e. version `v1.0.0`. (is the `v` important?)
 2. Fork https://github.com/dhis2designlab/scp-whitelist
 3. Add your package identifier (name) and version to list.csv. This can also be done in the GitHub interface.
-4. Create the pull request and let the pipeline run. A maintainer will look over the validation pipeline and approve it accordingly.
+4. Create the pull request and let the pipeline run. A maintainer will look over the validation pipeline and approve it if the checks pass.
 
 ## Section 2. Maintainer
 
@@ -38,7 +42,7 @@ It is possible to borrow a GitHub and npm user for the steps included in this pr
 1. Open the whitelist repo https://github.com/dhis2designlab/scp-whitelist
 2. Open the pull request that was published earlier.
 3. Check "Files changed" tab, and see that a package and version was added.
-4. Go to the "Checks" tab, and check through the "Run cat - > event.json <<EOF" action.
+4. Go to the "Checks" tab, and check through the "Run cat - > event.json <<EOF" job in "Validate"
 5. Go through the action and pay attention to the "debug" and "info" console.logs
     1. Important to notice here is the different jobs it goes through. First, it clones the GitHub repo with the corresponding release tag and checks that the property in package.json are correct, and contain the necessary values. Checks for eslint and npm audit are skipped during the `pr-verify` command, and only run during the local `verify` command. 
     2. Check that the output ends with a "Verification passed" log to know that the steps have been passed.
