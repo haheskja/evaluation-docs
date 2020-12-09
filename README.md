@@ -3,33 +3,21 @@ Documentation and steps for evaluation
 
 ## Section 1. Component owner
 
-### 1.0 Setting up a workspace
-1. Open up an empty folder
-2. Run `npm init` and follow the steps to initialize an empty npm module
-3. Install @dhis/cli-app-scripts with `npm install --dev @dhis2/cli-app-scripts` and react with `npm install react`
-4. Copy the `src` folder from the boilerplate
-5. Copy the `d2.config.js` file from the boilerplate
-6. Add the following to package.json to specify where the build files will be located (will be generated from running `d2-app-scripts build`)
-```
-  "main": "build/cjs/lib.js",
-  "module": "build/es/lib.js",
-```
-7. For your component library to be verified later on, it needs to be hosted in a public github repository. So go ahead and create a new public repository and push your component library.
-   1. Use the testaccount
+### 1.0 Setting up the component library
+1. Copy the files from boilerplate.zip.
+2. Follow the package verification guide from https://github.com/dhis2designlab/scp-cli to configure your package for the platform. This includes defining the keyword, git repository, and the dhis2ComponentSearch property in package.json.
+3. Run `npx -p "https://github.com/dhis2designlab/scp-cli#master" dhis2-scp-cli verify` to perform a local verification of your code. (Skipping eslint for now)
+4. Run `npm run build` to build a production version of your libray.
+
+### 1.1 Push your component library to GitHub
+1. For your component library to be verified later on, it needs to be hosted in a public github repository. So go ahead and create a new public repository and push your component library.
+   1. You can either use your own GitHub account or "borrow" a test acccount for this.
    2. `git init`
    3. `git add .`
    4. `git commit -m "Added base files"`
-   5. `git remote add origin <>`
+   5. `git remote add origin <GitHub url>`
    6. `git push --set-upstream origin master`
-8. Run `npm run build` to build a production version of your libray.
-9.  You now have a working simple component library
-
-Notes: Here it might instead be good to have created a simple project that can be cloned
-
-### 1.1 Using scp-cli to verify your component library
-1. Follow the package verification guide from https://github.com/dhis2designlab/scp-cli
-2. Run `npx -p "https://github.com/dhis2designlab/scp-cli#master" dhis2-scp-cli verify` to perform a local verification of your code. (Skipping eslint for now)
-
+   
 ### 1.2 Publish your component library to npm
 1. Run `npm login` and provide your username, password and email.
 2. Run `npm publish` to publish your new package.
