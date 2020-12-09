@@ -40,9 +40,22 @@ Notes: Here it might instead be good to have created a simple project that can b
 3. Add your package identifier (name) and version to list.csv. This can also be done in the GitHub interface.
 4. Create the pull request and let the pipeline run. A maintainer will look over the validation pipeline and approve it accordingly.
 
-## Section 2. Component consumer
+## Section 2. Maintainer
 
-### 2.0 Search for components
+### 2.0 Check the pull request
+1. Open the whitelist repo https://github.com/dhis2designlab/scp-whitelist
+2. Open the pull request that was published earlier.
+3. Check "Files changed" tab, and see that a package and version was added.
+4. Go to the "Checks" tab, and check through the "Run cat - > event.json <<EOF" action.
+5. Go through the action and pay attention to the "debug" and "info" console.logs
+    1. Important to notice here is the different jobs it goes through. First, it clones the GitHub repo with the corresponding release tag and checks that the property in package.json are correct, and contain the necessary values. Checks for eslint and npm audit are skipped during the `pr-verify` command, and only run during the local `verify` command. 
+    2. Check that the output ends with a "Verification passed" log to know that the steps have been passed.
+6. Go back to the "Conversation" tab and merge the pull request. The package should now be marked in the website as verified.
+
+## Section 3. Component consumer
+
+### 3.0 Search for components
 1. Open the website: https://dhis2designlab.github.io/scp-website/.
 2. Find one of the components you created and published in your package (e.g. Sidebar).
 3. Find a component related to covid for react.
+4. Identify the export and keywords, and go to the package's npm link.
