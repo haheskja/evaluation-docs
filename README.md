@@ -44,7 +44,7 @@ It is possible to borrow a GitHub and npm user for the steps included in this pr
 3. Check "Files changed" tab, and see that a package and version was added.
 4. Go to the "Checks" tab, and check through the "Run cat - > event.json <<EOF" job in "Validate"
 5. Go through the action and pay attention to the "debug" and "info" console.logs
-    1. Important to notice here is the different jobs it goes through. First, it fetches the package.json file from https://unpkg.com/, then uses the repo link in package.json to clone the GitHub repo with the corresponding release tag. Then it checks that the properties in package.json are correct, and contain the necessary values. Checks for eslint and npm audit are currently a bit buggy during the `pr-verify` command, and only work locally during the `verify` command.
+    1. Important to notice here is the different jobs it goes through. First, it fetches the package.json file from https://unpkg.com/, then uses the repo link in package.json to clone the GitHub repo with the corresponding release tag. Then it checks that the properties in package.json are correct, and contain the necessary values. Checks for eslint and npm audit during the `pr-verify` command currently have some issues, and only work locally during the `verify` command.
     2. Check that the output ends with a "Verification passed" log to know that the steps have been passed.
 6. Go back to the "Conversation" tab and merge the pull request. The package should now be marked in the website as verified.
 
