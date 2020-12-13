@@ -6,7 +6,7 @@ It is possible to borrow a GitHub and npm user for the steps included in this pr
 
 ## Section 1. Component owner
 
-### 1.0 Setting up the component library
+### 1.1 Setting up the component library
 1. Extract the contents from https://github.com/haheskja/scp-react-boilerplate into an empty folder.
 2. Change the name of the package in package.json to something else
 3. Follow the package verification guide from https://github.com/dhis2designlab/scp-cli to configure your package for the platform. This includes defining the keyword, git repository, and the dhis2ComponentSearch property in package.json.
@@ -17,7 +17,7 @@ It is possible to borrow a GitHub and npm user for the steps included in this pr
 5. Run `npx -p "https://github.com/dhis2designlab/scp-cli#master" dhis2-scp-cli verify` to perform a local verification of your code.
 
 
-### 1.1 Push your component library to GitHub
+### 1.2 Push your component library to GitHub
 1. For your component library to be verified later on, it needs to be hosted in a public github repository. So go ahead and create a new public repository and push your component library now, or use the one you potentially already created during the previous steps. Remember to add the HTTPS version of the url to the GitHub repository to your package.json file, and not the SSH version!
    1. You can either use your own GitHub account or "borrow" a test acccount for this.
    2. `git init`
@@ -26,11 +26,11 @@ It is possible to borrow a GitHub and npm user for the steps included in this pr
    5. `git remote add origin <GitHub url>`
    6. `git push --set-upstream origin master`
    
-### 1.2 Publish your component library to npm
+### 1.3 Publish your component library to npm
 1. Run `npm login` and provide your username, password and email.
 2. Run `npm publish` to publish your new package.
 
-### 1.3 Apply for verification
+### 1.4 Apply for verification
 1. First, you need to create a production tag in GitHub that matches the version of your published npm package, i.e. version `v1.0.0`.
 2. Fork https://github.com/dhis2designlab/scp-whitelist
 3. Add your package identifier (name) and version to list.csv. This can also be done in the GitHub interface.
@@ -38,7 +38,7 @@ It is possible to borrow a GitHub and npm user for the steps included in this pr
 
 ## Section 2. Maintainer
 
-### 2.0 Check the pull request
+### 2.1 Check the pull request
 1. Open the whitelist repo https://github.com/dhis2designlab/scp-whitelist
 2. Open the pull request that was published earlier.
 3. Check "Files changed" tab, and see that a package and version was added.
@@ -50,7 +50,7 @@ It is possible to borrow a GitHub and npm user for the steps included in this pr
 
 ## Section 3. Component consumer
 
-### 3.0 Search for components
+### 3.1 Search for components
 1. Open the website: https://dhis2designlab.github.io/scp-website/.
 2. Test our the search and filters. E.g. use them to find a component you are interested in (or one that you just published in your component library. Identify that it is verified.)
 4. Identify the name, export, and keywords on the component card, and use it to navigate to the component's npm link.
